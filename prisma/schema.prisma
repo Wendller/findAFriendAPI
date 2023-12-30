@@ -62,4 +62,6 @@ model PetRequirement {
 
   pet    Pet    @relation(fields: [pet_id], references: [id])
   pet_id String
+
+  @@map("pet_requirements")
 }
