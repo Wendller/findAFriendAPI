@@ -13,7 +13,7 @@ datasource db {
 model Org {
   id            String   @id @default(uuid())
   name          String
-  email         String
+  email         String   @unique
   password_hash String
   postal_code   String
   address       String
