@@ -35,6 +35,7 @@ model Pet {
   size               String
   energy_level       String
   independency_level String
+  environment_type   String
   created_at         DateTime @default(now())
 
   org    Org    @relation(fields: [org_id], references: [id])
@@ -50,8 +51,9 @@ model Pet {
 model PetImage {
   id        String @id @default(uuid())
   image_url String
-  pet       Pet    @relation(fields: [pet_id], references: [id])
-  pet_id    String
+
+  pet    Pet    @relation(fields: [pet_id], references: [id])
+  pet_id String
 
   @@map("pet_images")
 }
