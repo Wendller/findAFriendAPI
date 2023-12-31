@@ -17,4 +17,14 @@ export class PrismaPetImagesRepository implements PetImagesRepository {
       skipDuplicates: true,
     });
   }
+
+  async getManyByPetId(petId: string) {
+    const petImages = await prisma.petImage.findMany({
+      where: {
+        pet_id: petId,
+      },
+    });
+
+    return petImages;
+  }
 }

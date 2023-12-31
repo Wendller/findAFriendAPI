@@ -5,4 +5,5 @@ export interface PetRequirementsRepository {
     data: Prisma.PetRequirementUncheckedCreateInput
   ): Promise<PetRequirement>;
   createMany(data: Prisma.PetRequirementUncheckedCreateInput[]): Promise<void>;
+  getManyByPetId(petId: string): Promise<PetRequirement[] | null>;
 }

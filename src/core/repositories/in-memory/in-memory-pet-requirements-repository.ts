@@ -28,4 +28,16 @@ export class InMemoryPetRequirementsRepository
       });
     }
   }
+
+  async getManyByPetId(petId: string) {
+    const petRequirements = this.items.filter(
+      (requirement) => requirement.pet_id === petId
+    );
+
+    if (!petRequirements) {
+      return null;
+    }
+
+    return petRequirements;
+  }
 }

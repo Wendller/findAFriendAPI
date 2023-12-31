@@ -19,4 +19,14 @@ export class PrismaPetRequirementsRepository
       skipDuplicates: true,
     });
   }
+
+  async getManyByPetId(petId: string) {
+    const petRequirements = await prisma.petRequirement.findMany({
+      where: {
+        pet_id: petId,
+      },
+    });
+
+    return petRequirements;
+  }
 }

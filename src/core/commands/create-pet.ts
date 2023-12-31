@@ -5,6 +5,7 @@ import { PetImagesRepository } from "@/core/repositories/pet-images-repository";
 import { PetRequirementsRepository } from "@/core/repositories/pet-requirements-repository";
 import { CreatePetInput } from "../inputs/create-pet-input";
 import { ResourceNotFoundError } from "../errors/resource-not-found-error";
+import { SavePetError } from "../errors/save-pet-error";
 
 interface CreatePetResponse {
   pet: Pet;
@@ -14,8 +15,8 @@ export class CreatePetCommand {
   constructor(
     private orgsRepository: OrgsRepository,
     private petsRepository: PetsRepository,
-    private petImageRepository: PetImagesRepository,
-    private petRequirementRepository: PetRequirementsRepository
+    private petImagesRepository: PetImagesRepository,
+    private petRequirementsRepository: PetRequirementsRepository
   ) {}
 
   async execute({
@@ -55,7 +56,7 @@ export class CreatePetCommand {
         imagesToCreate.push({ image_url: image.imageUrl, pet_id: pet.id });
       }
 
-      await this.petImageRepository.createMany(imagesToCreate);
+      await this.petImagesRepository.createMany(imagesToCreate);
 
       if (requirements && requirements.length > 0) {
         for (const requirement of requirements) {
@@ -65,12 +66,12 @@ export class CreatePetCommand {
           });
         }
 
-        await this.petRequirementRepository.createMany(requirementsToCreate);
+        await this.petRequirementsRepository.createMany(requirementsToCreate);
       }
 
       return { pet };
     } catch (err) {
-      throw err;
+      throw new SavePetError();
     }
   }
 }

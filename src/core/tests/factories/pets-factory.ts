@@ -31,7 +31,7 @@ interface PetDatabase {
   energy_level: any;
   independency_level: any;
   environment_type: any;
-  orgId: any;
+  org_id: any;
   images: any;
   requirements?: any;
 }
@@ -81,10 +81,10 @@ export const petDatabaseFactory = Factory.Sync.makeFactory<PetDatabase>({
   description: faker.company.catchPhrase(),
   energy_level: "medium",
   environment_type: "small",
-  images: petImageFactory.buildList(2),
+  images: petImageDatabaseFactory.buildList(2),
   independency_level: "low",
-  orgId: randomUUID(),
-  requirements: petRequirementFactory.buildList(2),
+  org_id: randomUUID(),
+  requirements: petRequirementDatabaseFactory.buildList(2),
 });
 
 export const petFactory = Factory.Sync.makeFactory<PetObject>({

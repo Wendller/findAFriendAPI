@@ -26,4 +26,14 @@ export class InMemoryPetImagesRepository implements PetImagesRepository {
       });
     }
   }
+
+  async getManyByPetId(petId: string) {
+    const petImages = this.items.filter((pet) => pet.id === petId);
+
+    if (!petImages) {
+      return null;
+    }
+
+    return petImages;
+  }
 }
