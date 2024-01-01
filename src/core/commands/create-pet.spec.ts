@@ -67,6 +67,7 @@ describe("Create Pet command", () => {
         independency_level: input.independencyLevel,
         environment_type: input.environmentType,
         created_at: expect.any(Date),
+        city: org.city,
         org_id: input.orgId,
       })
     );
@@ -121,6 +122,7 @@ describe("Create Pet command", () => {
         independency_level: input.independencyLevel,
         environment_type: input.environmentType,
         created_at: expect.any(Date),
+        city: org.city,
         org_id: input.orgId,
       })
     );

@@ -50,6 +50,7 @@ export class CreatePetCommand {
         independency_level: independencyLevel,
         environment_type: environmentType,
         org_id: orgId,
+        city: orgAssociated.city,
       });
 
       for (const image of images) {
