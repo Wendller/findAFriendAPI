@@ -3,7 +3,7 @@ import { z } from "zod";
 export class CreatePetImageInput {
   imageUrl: string;
 
-  constructor(data: any) {
+  constructor(data: unknown) {
     const createPetImageSchema = z.object({
       imageUrl: z.string(),
     });

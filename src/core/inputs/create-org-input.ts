@@ -8,7 +8,7 @@ export class CreateOrgInput {
   address: string;
   whatsapp: string;
 
-  constructor(data: any) {
+  constructor(data: unknown) {
     const createOrgSchema = z.object({
       name: z.string(),
       email: z.string().email(),

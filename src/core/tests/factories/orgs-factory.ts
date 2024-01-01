@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as Factory from "factory.ts";
 import { randomUUID } from "node:crypto";
 import { faker } from "@faker-js/faker";

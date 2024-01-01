@@ -14,7 +14,7 @@ export class CreatePetInput {
   images: CreatePetImageInput[];
   requirements?: CreatePetRequirementInput[] | null;
 
-  constructor(data: any) {
+  constructor(data: unknown) {
     const imageInfoSchema = z.object({
       imageUrl: z.string(),
     });

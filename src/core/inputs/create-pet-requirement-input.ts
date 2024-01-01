@@ -3,7 +3,7 @@ import { z } from "zod";
 export class CreatePetRequirementInput {
   title: string;
 
-  constructor(data: any) {
+  constructor(data: unknown) {
     const createPetRequirementSchema = z.object({
       title: z.string(),
     });

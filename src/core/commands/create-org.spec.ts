@@ -1,14 +1,6 @@
-import {
-  afterAll,
-  afterEach,
-  beforeAll,
-  describe,
-  expect,
-  it,
-  vi,
-} from "vitest";
+import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
 import { setupServer } from "msw/node";
-import { HttpResponse, graphql, http } from "msw";
+import { HttpResponse, http } from "msw";
 import { InMemoryOrgsRepository } from "../repositories/in-memory/in-memory-orgs-repository";
 import { CreateOrgCommand } from "./create-org";
 import { orgFactory } from "../tests/factories/orgs-factory";

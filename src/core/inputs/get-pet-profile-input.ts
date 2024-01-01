@@ -3,7 +3,7 @@ import { z } from "zod";
 export class GetPetProfileInput {
   petId: string;
 
-  constructor(data: any) {
+  constructor(data: unknown) {
     const getPetProfileSchema = z.object({
       petId: z.string().uuid(),
     });

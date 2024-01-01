@@ -7,7 +7,7 @@ export class SearchPetsInput {
   energyLevel?: string;
   independencyLevel?: string;
 
-  constructor(data: any) {
+  constructor(data: unknown) {
     const searchPetsSchema = z.object({
       city: z.string(),
       age: z.string().optional(),

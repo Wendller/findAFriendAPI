@@ -4,7 +4,6 @@ import { petDatabaseFactory } from "../tests/factories/pets-factory";
 import { randomUUID } from "crypto";
 import { ResourceNotFoundError } from "../errors/resource-not-found-error";
 import { GetPetProfileCommand } from "./get-pet-profile";
-import { InMemoryPetImagesRepository } from "../repositories/in-memory/in-memory-pet-images-repository";
 
 let petsRepository: InMemoryPetsRepository;
 let sut: GetPetProfileCommand;
