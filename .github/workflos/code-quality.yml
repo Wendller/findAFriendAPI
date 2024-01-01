@@ -1,0 +1,24 @@
+name: Code Quality
+
+on: [push]
+
+jobs:
+  build:
+    name: Build and Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+      - uses: actions/checkout@v3
+
+      - name: Get and setup Node version
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: "npm"
+
+      - name: Code format
+      - run: npm run lint
+
+      - name: Run Unit Tests
+      - run: npm ci
+      - run: npm run test
