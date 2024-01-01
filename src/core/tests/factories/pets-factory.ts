@@ -23,7 +23,6 @@ interface PetRequirementObject {
 }
 
 interface PetDatabase {
-  id: any;
   name: any;
   description: any;
   age: any;
@@ -32,8 +31,7 @@ interface PetDatabase {
   independency_level: any;
   environment_type: any;
   org_id: any;
-  images: any;
-  requirements?: any;
+  city: any;
 }
 
 interface PetObject {
@@ -74,17 +72,15 @@ export const petRequirementFactory =
   });
 
 export const petDatabaseFactory = Factory.Sync.makeFactory<PetDatabase>({
-  id: randomUUID(),
   name: faker.person.firstName(),
   age: "baby",
   size: "medium",
   description: faker.company.catchPhrase(),
   energy_level: "medium",
   environment_type: "small",
-  images: petImageDatabaseFactory.buildList(2),
   independency_level: "low",
   org_id: randomUUID(),
-  requirements: petRequirementDatabaseFactory.buildList(2),
+  city: faker.location.city(),
 });
 
 export const petFactory = Factory.Sync.makeFactory<PetObject>({
