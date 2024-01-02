@@ -1,11 +1,10 @@
 interface ILocation {
   postalCode: string;
   street: string;
-  complement?: string;
-  neighborhood: string;
   city: string;
   stateCode: string;
-  IBGECode: string;
+  latitude: string;
+  longitude: string;
 }
 
 export interface IGetLocationByCEPPort {

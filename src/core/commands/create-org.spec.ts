@@ -12,21 +12,27 @@ import { OrgAlreadyExistsError } from "../errors/org-already-exists-error";
 let orgsRepository: InMemoryOrgsRepository;
 let sut: CreateOrgCommand;
 
-const POSTAL_CODE = "01001000";
-const VIA_CEP_URL = `https://viacep.com.br/ws/${POSTAL_CODE}/json/`;
+const POSTAL_CODE = "89010025";
+const BRASIL_API_URL = `https://brasilapi.com.br/api/cep/v2/${POSTAL_CODE}`;
 
 const httpLocationResponse = {
-  street: "Praça da Sé",
-  complement: "lado ímpar",
-  neighborhood: "Sé",
-  city: "São Paulo",
-  stateCode: "SP",
-  IBGECode: "3550308",
-  postalCode: "01001-000",
+  cep: "89010025",
+  state: "SC",
+  city: "Blumenau",
+  neighborhood: "Centro",
+  street: "Rua Doutor Luiz de Freitas Melro",
+  service: "viacep",
+  location: {
+    type: "Point",
+    coordinates: {
+      longitude: "-49.0629788",
+      latitude: "-26.9244749",
+    },
+  },
 };
 
 const restHandlers = [
-  http.get(VIA_CEP_URL, () => {
+  http.get(BRASIL_API_URL, () => {
     return HttpResponse.json(httpLocationResponse);
   }),
 ];

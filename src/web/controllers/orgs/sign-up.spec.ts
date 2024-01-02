@@ -17,12 +17,10 @@ describe("Sign Up (e2e)", () => {
       name: faker.person.fullName(),
       email: faker.internet.email(),
       password: faker.internet.password(),
-      postalCode: "01001000",
+      postalCode: "89010025",
       address: faker.location.streetAddress(),
       whatsapp: faker.phone.number(),
     });
-
-    console.log(response.body);
 
     expect(response.statusCode).toEqual(201);
   });

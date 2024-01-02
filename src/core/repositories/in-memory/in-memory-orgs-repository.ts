@@ -1,6 +1,7 @@
 import { Org, Prisma } from "@prisma/client";
 import { OrgsRepository } from "../orgs-repository";
 import { randomUUID } from "node:crypto";
+import { Decimal } from "@prisma/client/runtime/library";
 
 export class InMemoryOrgsRepository implements OrgsRepository {
   public items: Org[] = [];
@@ -16,6 +17,8 @@ export class InMemoryOrgsRepository implements OrgsRepository {
       city: data.city,
       uf_code: data.uf_code,
       whatsapp: data.whatsapp,
+      latitude: new Decimal(data.latitude.toString()),
+      longitude: new Decimal(data.longitude.toString()),
       created_at: new Date(),
     };
 

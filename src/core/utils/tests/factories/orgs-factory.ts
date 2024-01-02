@@ -2,6 +2,7 @@
 import * as Factory from "factory.ts";
 import { randomUUID } from "node:crypto";
 import { faker } from "@faker-js/faker";
+import { Decimal } from "@prisma/client/runtime/library";
 
 interface DatabaseOrg {
   id: any;
@@ -14,6 +15,8 @@ interface DatabaseOrg {
   city: any;
   uf_code: any;
   whatsapp: any;
+  latitude: any;
+  longitude: any;
   created_at: any;
 }
 
@@ -42,6 +45,8 @@ export const orgDatabaseFactory = Factory.Sync.makeFactory<DatabaseOrg>({
   whatsapp: faker.phone.number(),
   city: faker.location.city(),
   uf_code: faker.location.state({ abbreviated: true }),
+  latitude: new Decimal(faker.location.latitude()),
+  longitude: new Decimal(faker.location.longitude()),
   created_at: new Date(),
 });
 

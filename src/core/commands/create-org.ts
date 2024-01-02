@@ -1,9 +1,10 @@
 import { Org } from "@prisma/client";
 import { OrgsRepository } from "@/core/repositories/orgs-repository";
 import { hash } from "bcryptjs";
-import { getLocationByCEPAdapter } from "../adapters/get-location-by-cep/via-cep";
+import { getLocationByCEP } from "../adapters/get-location-by-cep/brasil-api";
 import { OrgAlreadyExistsError } from "../errors/org-already-exists-error";
 import { CreateOrgInput } from "../inputs/create-org-input";
+import { Decimal } from "@prisma/client/runtime/library";
 
 interface CreateOrgResponse {
   org: Org;
@@ -27,7 +28,7 @@ export class CreateOrgCommand {
     }
 
     const passwordHash = await hash(password, 6);
-    const orgLocation = await new getLocationByCEPAdapter().exec(postalCode);
+    const orgLocation = await new getLocationByCEP().exec(postalCode);
 
     const org = await this.orgsRepository.create({
       name,
@@ -37,6 +38,8 @@ export class CreateOrgCommand {
       address: address,
       city: orgLocation.city,
       uf_code: orgLocation.stateCode,
+      latitude: new Decimal(orgLocation.latitude),
+      longitude: new Decimal(orgLocation.longitude),
       whatsapp,
     });
 
