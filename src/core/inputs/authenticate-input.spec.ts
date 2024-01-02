@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { faker } from "@faker-js/faker";
-import { petImageFactory } from "../tests/factories/pets-factory";
+import { petImageFactory } from "../utils/tests/factories/pets-factory";
 import { AuthenticateInput } from "./authenticate-input";
 
 describe("Authenticate Input", () => {

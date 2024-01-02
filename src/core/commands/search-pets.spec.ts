@@ -1,6 +1,6 @@
 import { beforeAll, beforeEach, describe, expect, it } from "vitest";
 import { InMemoryPetsRepository } from "../repositories/in-memory/in-memory-pets-repository";
-import { petDatabaseFactory } from "../tests/factories/pets-factory";
+import { petDatabaseFactory } from "../utils/tests/factories/pets-factory";
 import { SearchPetsCommand } from "./search-pets";
 
 let petsRepository: InMemoryPetsRepository;

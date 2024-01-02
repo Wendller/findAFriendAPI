@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { faker } from "@faker-js/faker";
 import { CreateOrgInput } from "./create-org-input";
-import { orgFactory } from "../tests/factories/orgs-factory";
+import { orgFactory } from "../utils/tests/factories/orgs-factory";
 
 describe("Create Org Input", () => {
   it("should validate when valid params", () => {

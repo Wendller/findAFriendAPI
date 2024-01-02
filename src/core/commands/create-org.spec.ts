@@ -3,7 +3,7 @@ import { setupServer } from "msw/node";
 import { HttpResponse, http } from "msw";
 import { InMemoryOrgsRepository } from "../repositories/in-memory/in-memory-orgs-repository";
 import { CreateOrgCommand } from "./create-org";
-import { orgFactory } from "../tests/factories/orgs-factory";
+import { orgFactory } from "../utils/tests/factories/orgs-factory";
 import { CreateOrgInput } from "../inputs/create-org-input";
 import { compare } from "bcryptjs";
 import { faker } from "@faker-js/faker";

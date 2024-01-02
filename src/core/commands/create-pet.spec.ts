@@ -1,6 +1,6 @@
 import { beforeAll, beforeEach, describe, expect, it } from "vitest";
 import { InMemoryOrgsRepository } from "../repositories/in-memory/in-memory-orgs-repository";
-import { orgDatabaseFactory } from "../tests/factories/orgs-factory";
+import { orgDatabaseFactory } from "../utils/tests/factories/orgs-factory";
 import { InMemoryPetsRepository } from "../repositories/in-memory/in-memory-pets-repository";
 import { InMemoryPetImagesRepository } from "../repositories/in-memory/in-memory-pet-images-repository";
 import { InMemoryPetRequirementsRepository } from "../repositories/in-memory/in-memory-pet-requirements-repository";
@@ -9,7 +9,7 @@ import {
   petFactory,
   petImageFactory,
   petRequirementFactory,
-} from "../tests/factories/pets-factory";
+} from "../utils/tests/factories/pets-factory";
 import { CreatePetInput } from "../inputs/create-pet-input";
 import { randomUUID } from "crypto";
 import { ResourceNotFoundError } from "../errors/resource-not-found-error";

@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, it } from "vitest";
 import { InMemoryOrgsRepository } from "@/core/repositories/in-memory/in-memory-orgs-repository";
 import { AuthenticateCommand } from "./authenticate";
 import { hash } from "bcryptjs";
-import { orgDatabaseFactory } from "../tests/factories/orgs-factory";
+import { orgDatabaseFactory } from "../utils/tests/factories/orgs-factory";
 import { faker } from "@faker-js/faker";
 import { InvalidCredentialsError } from "../errors/invalid-credentials-error";
 

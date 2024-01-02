@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { faker } from "@faker-js/faker";
 import { CreatePetRequirementInput } from "./create-pet-requirement-input";
-import { petRequirementFactory } from "../tests/factories/pets-factory";
+import { petRequirementFactory } from "../utils/tests/factories/pets-factory";
 
 describe("Create Pet Requirement Input", () => {
   it("should validate when valid params", () => {

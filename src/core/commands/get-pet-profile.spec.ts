@@ -1,6 +1,6 @@
 import { beforeAll, describe, expect, it } from "vitest";
 import { InMemoryPetsRepository } from "../repositories/in-memory/in-memory-pets-repository";
-import { petDatabaseFactory } from "../tests/factories/pets-factory";
+import { petDatabaseFactory } from "../utils/tests/factories/pets-factory";
 import { randomUUID } from "crypto";
 import { ResourceNotFoundError } from "../errors/resource-not-found-error";
 import { GetPetProfileCommand } from "./get-pet-profile";
