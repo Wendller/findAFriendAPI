@@ -1,4 +1,4 @@
-import { prisma } from "@/core/lib/prisma";
+import { prisma } from "@/core/config/prisma";
 import { PetsRepository, SearchManyParams } from "../pets-repository";
 import { Prisma } from "@prisma/client";
 
