@@ -9,9 +9,29 @@ export async function signIn(request: FastifyRequest, reply: FastifyReply) {
   try {
     const signInCommand = makeAuthenticateCommand();
 
-    await signInCommand.execute(signInInput);
+    const { org } = await signInCommand.execute(signInInput);
 
-    return reply.status(200).send();
+    const token = await reply.jwtSign(
+      {},
+      {
+        sign: {
+          sub: org.id,
+        },
+      }
+    );
+
+    return reply.status(200).send({
+      org: {
+        name: org.name,
+        email: org.email,
+        postalCode: org.postal_code,
+        address: org.address,
+        city: org.city,
+        ufCode: org.uf_code,
+        whatsapp: org.whatsapp,
+      },
+      token,
+    });
   } catch (err) {
     if (err instanceof InvalidCredentialsError) {
       return reply.status(400).send({ message: err.message });

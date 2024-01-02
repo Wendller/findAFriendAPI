@@ -31,5 +31,11 @@ describe("Sign In (e2e)", () => {
     });
 
     expect(response.statusCode).toEqual(200);
+    expect(response.body).toEqual(
+      expect.objectContaining({
+        org: expect.objectContaining({ email: email }),
+        token: expect.any(String),
+      })
+    );
   });
 });
