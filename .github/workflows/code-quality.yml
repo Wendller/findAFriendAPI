@@ -6,6 +6,17 @@ jobs:
   build:
     name: Build and Test
     runs-on: ubuntu-latest
+
+    services:
+      database:
+        image: bitnami/postgresql
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USERNAME: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DATABASE: findafriend
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
@@ -24,3 +35,10 @@ jobs:
 
       - name: Run Unit Tests
         run: npm run test
+
+      - name: Run Tests E2E
+        run: npm run test:e2e
+        env:
+          JWT_SECRET: testing-secret
+          DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/findafriend?schema=public"
+          APP_URL: http://localhost:3333

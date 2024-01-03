@@ -3,6 +3,8 @@ import { PrismaClient } from "@prisma/client";
 import { Environment } from "vitest";
 import { randomUUID } from "crypto";
 import { execSync } from "child_process";
+import path from "path";
+import { fs } from "mz";
 
 const prisma = new PrismaClient();
 
@@ -36,6 +38,30 @@ export default <Environment>(<unknown>{
         );
 
         await prisma.$disconnect();
+
+        const uploadsPath = path.resolve(__dirname, "..", "uploads");
+
+        fs.readdir(uploadsPath, (err, files) => {
+          if (err) throw new Error("Directory not found");
+
+          files.forEach((file) => {
+            const filePath = path.join(uploadsPath, file);
+            const uploadExampleFileName = "92ca15cfa66aeab1d1be-pet.jpg";
+
+            const deleteFileIsAllowed = !filePath.includes(
+              uploadExampleFileName
+            );
+
+            if (deleteFileIsAllowed) {
+              fs.unlink(filePath, (err) => {
+                if (err) {
+                  console.error(err);
+                  throw new Error("Deleting file error");
+                }
+              });
+            }
+          });
+        });
       },
     };
   },
