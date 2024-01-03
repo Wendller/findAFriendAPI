@@ -1,9 +1,18 @@
-import { Pet } from "@prisma/client";
+import { Pet, PetImage } from "@prisma/client";
 import { PetsRepository } from "@/core/repositories/pets-repository";
 import { SearchPetsInput } from "../inputs/search-pets-input";
 
+interface IPet extends Pet {
+  images: PetImage[];
+}
+
 interface SearchPetsResponse {
-  pets: Pet[];
+  pets: IPet[];
+  total: number;
+}
+
+interface SearchPetsResponse {
+  pets: IPet[];
   total: number;
 }
 

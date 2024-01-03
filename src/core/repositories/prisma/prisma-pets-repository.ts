@@ -37,6 +37,7 @@ export class PrismaPetsRepository implements PetsRepository {
       },
       include: {
         images: true,
+        requirements: true,
       },
     });
 

@@ -47,7 +47,7 @@ export async function create(request: FastifyRequest, reply: FastifyReply) {
   const createPetInput = new CreatePetInput({ ...body, images, requirements });
   const createPetCommand = makeCreatePetCommand();
 
-  await createPetCommand.execute(createPetInput);
+  const { pet } = await createPetCommand.execute(createPetInput);
 
-  return reply.status(201).send();
+  return reply.status(201).send({ pet });
 }

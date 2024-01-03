@@ -1,10 +1,15 @@
-import { Pet } from "@prisma/client";
+import { Org, Pet, PetImage } from "@prisma/client";
 import { PetsRepository } from "@/core/repositories/pets-repository";
 import { GetPetProfileInput } from "../inputs/get-pet-profile-input";
 import { ResourceNotFoundError } from "../errors/resource-not-found-error";
 
+interface IPet extends Pet {
+  images: PetImage[];
+  org: Org;
+}
+
 interface GetPetProfileResponse {
-  pet: Pet;
+  pet: IPet;
 }
 
 export class GetPetProfileCommand {
