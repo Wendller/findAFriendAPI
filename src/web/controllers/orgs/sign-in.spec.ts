@@ -20,7 +20,7 @@ describe("Sign In (e2e)", () => {
       name: faker.person.fullName(),
       email,
       password,
-      postalCode: "01001000",
+      postalCode: "89010025",
       address: faker.location.streetAddress(),
       whatsapp: faker.phone.number(),
     });
