@@ -20,18 +20,36 @@ export async function signIn(request: FastifyRequest, reply: FastifyReply) {
       }
     );
 
-    return reply.status(200).send({
-      org: {
-        name: org.name,
-        email: org.email,
-        postalCode: org.postal_code,
-        address: org.address,
-        city: org.city,
-        ufCode: org.uf_code,
-        whatsapp: org.whatsapp,
-      },
-      token,
-    });
+    const refreshToken = await reply.jwtSign(
+      {},
+      {
+        sign: {
+          sub: org.id,
+          expiresIn: "7d",
+        },
+      }
+    );
+
+    return reply
+      .setCookie("refreshToken", refreshToken, {
+        path: "/",
+        secure: true,
+        sameSite: true,
+        httpOnly: true,
+      })
+      .status(200)
+      .send({
+        org: {
+          name: org.name,
+          email: org.email,
+          postalCode: org.postal_code,
+          address: org.address,
+          city: org.city,
+          ufCode: org.uf_code,
+          whatsapp: org.whatsapp,
+        },
+        token,
+      });
   } catch (err) {
     if (err instanceof InvalidCredentialsError) {
       return reply.status(400).send({ message: err.message });

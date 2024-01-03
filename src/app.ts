@@ -2,6 +2,7 @@ import fastify from "fastify";
 import { ZodError } from "zod";
 import { env } from "./core/env";
 import fastifyJwt from "@fastify/jwt";
+import fastifyCookie from "@fastify/cookie";
 import fastifyStatic from "@fastify/static";
 import { orgsRoutes } from "./web/controllers/orgs/routes";
 import { petsRoutes } from "./web/controllers/pets/routes";
@@ -14,7 +15,16 @@ app.register(multer.contentParser);
 
 app.register(fastifyJwt, {
   secret: env.JWT_SECRET,
+  sign: {
+    expiresIn: "10m",
+  },
+  cookie: {
+    cookieName: "refreshToken",
+    signed: false,
+  },
 });
+
+app.register(fastifyCookie);
 
 app.register(fastifyStatic, {
   root: path.join(__dirname, "..", "uploads"),

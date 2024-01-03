@@ -22,7 +22,7 @@ export async function createAndAuthenticateOrg(
     },
   });
 
-  const authResponse = await request(app.server).post("/sessions").send({
+  const authResponse = await request(app.server).post("/orgs/sessions").send({
     email: email,
     password: "123456",
   });

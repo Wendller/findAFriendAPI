@@ -25,7 +25,7 @@ describe("Sign In (e2e)", () => {
       whatsapp: faker.phone.number(),
     });
 
-    const response = await request(app.server).post("/sessions").send({
+    const response = await request(app.server).post("/orgs/sessions").send({
       email,
       password,
     });
